@@ -1,0 +1,68 @@
+---
+name: Vito Adrian
+surname: Cantu, PhD
+#position: "PhD"
+#address: "School of Physics & Chemistry, École Normale Supérieure"
+#phone: +1 22 3333 4444
+#www: mariecurie.com
+email: "vito@adrian-cantu.com"
+#twitter: mariecurie
+github: Adrian-Cantu
+#linkedin: mariecurie
+#date: "`r format(Sys.time(), '%B %Y')`"
+output: 
+  vitae::moderncv
+---
+
+
+# Profesional Statement
+
+Bioinformatician with 10 years of research experience. Expertise analyzing NGS datasets using machine learning and statistical inference. Developer of software currently in use in the field of metagenomics.Training in molecular biology and genetics allows efficient communication with team members with diverse expertise.
+
+# Education
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(tidyverse)
+library(gsheet)
+library(scholar)
+library(easyPubMed)
+#library(googlesheets4)
+```
+
+```{r education}
+gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1MRJsv7ikNyEsJByHhTkLKXOG048FFJnI9gr1nsxKQVM/edit?usp=sharing", sheet="Education") %>%
+  vitae::detailed_entries(what = Degree,
+                          when = Year,
+                          where = Institution, 
+                          with = Location, 
+                          why = Details)
+```
+
+
+
+
+
+```{r}
+
+
+scholar.id <- "Vc7DmLIAAAAJ" 
+pub <- get_publications(scholar.id)
+pub %>% 
+  data.frame() %>%
+  #mutate(title=str_replace(title,'β','\beta')) %>% 
+  mutate(title=str_replace(title,"\\u03B2",'beta')) %>% 
+  #mutate(title=str_replace(title,"\\u0008",'--------')) %>%
+  #mutate(title= gsub(x = title, pattern ="<U+03B2>" , replacement = "\beta")) %>% 
+  mutate(Title = title, Authors = author, 
+         Journal = paste0(journal,' ',number),
+         Year = year) %>% 
+  vitae::detailed_entries(what = Title,
+                          when = Year,
+                          where = 'Institution', 
+                          with = Journal, 
+                          why = 'Why')
+  
+```
+
