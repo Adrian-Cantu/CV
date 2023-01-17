@@ -27,7 +27,7 @@ library(vitae)
 library(tidyverse)
 library(gsheet)
 library(scholar)
-library(easyPubMed)
+#library(easyPubMed)
 #library(googlesheets4)
 ```
 
