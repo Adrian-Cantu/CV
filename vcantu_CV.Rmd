@@ -19,9 +19,9 @@ github: Adrian-Cantu
 #     toc: false
 # params:
 # theme: banking
-fontsize: 2pt
 geometry: 
   - scale=0.90
+fontsize: 10pt
 output:
   vitae::moderncv:
     theme: banking

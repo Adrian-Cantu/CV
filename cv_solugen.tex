@@ -1,0 +1,177 @@
+%% start of file `template.tex'.
+%% Copyright 2006-2015 Xavier Danaux (xdanaux@gmail.com).
+%
+% Adapted to be an Rmarkdown template by Mitchell O'Hara-Wild
+% 8 February 2019
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License version 1.3c,
+% available at http://www.latex-project.org/lppl/.
+
+
+\documentclass[11pt,a4paper,sans]{moderncv}
+
+% moderncv themes
+\moderncvstyle{banking}                             % style options are 'casual' (default), 'classic', 'banking', 'oldstyle' and 'fancy'
+
+\definecolor{color0}{rgb}{0,0,0}% black
+\definecolor{color1}{HTML}{3873B3}% custom
+\definecolor{color2}{rgb}{0.45,0.45,0.45}% dark grey
+
+\usepackage[scaled=0.86]{DejaVuSansMono}
+
+\providecommand{\tightlist}{%
+	\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\def\donothing#1{#1}
+\def\emaillink#1{#1}
+
+\nopagenumbers{}                                  % uncomment to suppress automatic page numbering for CVs longer than one page
+
+% character encoding
+%\usepackage[utf8]{inputenc}                       % if you are not using xelatex ou lualatex, replace by the encoding you are using
+%\usepackage{CJKutf8}                              % if you need to use CJK to typeset your resume in Chinese, Japanese or Korean
+
+% adjust the page margins
+\usepackage[scale=0.90]{geometry}
+%\setlength{\hintscolumnwidth}{3cm}                % if you want to change the width of the column with the dates
+%\setlength{\makecvheadnamewidth}{10cm}            % for the 'classic' style, if you want to force the width allocated to your name and avoid line breaks. be careful though, the length is normally calculated to avoid any overlap with your personal info; use this at your own typographical risks...
+
+
+
+% personal data
+\name{Vito Adrian}{Cantu, PhD}
+
+
+ % Phone number
+\email{\donothing{\href{mailto:vito@adrian-cantu.com}{\nolinkurl{vito@adrian-cantu.com}}}}
+ % Personal website
+
+
+\social[github]{Adrian-Cantu}
+% \extrainfo{additional information}                 % optional, remove / comment the line if not wanted
+
+
+
+
+% Pandoc CSL macros
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[3] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+%----------------------------------------------------------------------------------
+%            content
+%----------------------------------------------------------------------------------
+\begin{document}
+%\begin{CJK*}{UTF8}{gbsn}                          % to typeset your resume in Chinese using CJK
+%-----       resume       ---------------------------------------------------------
+\makecvtitle
+
+
+
+\hypertarget{profesional-statement}{%
+\section{Profesional Statement}\label{profesional-statement}}
+
+Bioinformatician with 10 years of research experience. Expertise
+analyzing NGS datasets using machine learning and statistical inference.
+Developer of software currently in use in the field of
+metagenomics.Training in molecular biology and genetics allows efficient
+communication with team members with diverse expertise.
+
+\hypertarget{education}{%
+\section{Education}\label{education}}
+
+\nopagebreak
+    \cventry{2015 - 2020}{San Diego State University and Claremont Graduate University}{PhD in Computational Sciences}{San Diego, California}{}{\empty}
+    \cventry{2010 - 2012}{National Autonomous University of Mexico}{Master Degree in Biochemistry}{Cuernavaca, Mexico}{}{\empty}
+    \cventry{2006 - 2010}{National Autonomous University of Mexico}{Bachelor Degree in Genomic Sciences}{Cuernavaca, Mexico}{}{\empty}
+
+\hypertarget{skills}{%
+\section{Skills}\label{skills}}
+
+\nopagebreak
+    \cvitem{}{Machine Learning (Tensorflow, Scikit-learn) applied to biological questions. }
+    \cvitem{}{NGS analysis pipeline design and optimization. }
+    \cvitem{}{Linux system administration. }
+    \cvitem{}{Proficient in multiple programming and scripting languages: Bash, Perl, Python, parallel C++ (Pthreads), R/Bioconductor, parallel C (openMP, MPI). }
+    \cvitem{}{HPC and cloud computing using Amazon Web Services, Google cloud, Sun Grid Engine. }
+    \cvitem{}{Version control and distributed code development via Git (and GitHub). }
+    \cvitem{}{Software and pipelines packaging (GNU Autotools, SnakeMake). }
+    \cvitem{}{Molecular biology, protein engineering, cloning, and microbiology; including practices in BSL2 laboratories. }
+
+\hypertarget{work-experience}{%
+\section{Work Experience}\label{work-experience}}
+
+\nopagebreak
+    \cventry{2021 ‑ Present}{University of Pennsylvania}{Postdoc researcher}{Philadelphia, USA}{}{\begin{itemize}%
+\item Clonal expansion monitoring of gene therapy clinical trials and insertion site distribution analysis of multiple viral vectors and experimental conditions.%
+\item Generated report and technical documents for clients of the Viral/Molecular high density sequencing core.%
+\item Used ML to propose markers to predict the efficiency of CART treatment in patients with Chronic Lymphocytic Leukemia.%
+\item Updated and packaged legacy code, making it usable in new projects.%
+\item Analyzed NGS data for seven different gene therapy projects.%
+\item Developed software to assess safety of gene therapy treatment by comparing insertion site distribution of in-house samples to public data from safe treatments%
+\end{itemize}}
+
+% \vspace{3cm}
+
+    \cventry{2015‑ 2020}{San Diego State University}{Research assistant}{San Diego, USA}{}{\begin{itemize}%
+\item In collaboration with mathematicians and structural biologists, I developed PhANNs, a tool that uses machine learning to classify phage structural proteins from their amino acid sequences and runs as a webserver hosted in Google cloud (https://phanns.com).%
+\item Optimized bioinformatic pipelines to the Cystic Fibrosis Rapid Response, an experimental program to go from sample collection to multiomics report (metagenome, metatranscriptome, virome and metabolome) in less than 48 hours.%
+\item Developed PRINSEQ++, a fast tool for quality control of metagenomic sequences using parallel C++ (pthreads) to reduce QC time from 100 minutes down to 5 minutes with identical results.%
+\item Updated and packaged legacy code, making it usable in new projects.%
+\item Co-authored more than 10 publications in the fields of metagenomics, next generation sequencing and machine learning%
+\end{itemize}}
+    \cventry{2014}{CIAD (Center for Nutrition Research and Development)}{Bioinformatician}{Mexico City, Mexico}{}{\begin{itemize}%
+\item Transcriptomic analysis of shrimps (Palaemonetes argentinus) in aquaculture.%
+\item De novo assembly of bacterial and viral genes from human oral cavity metagenomes.%
+\end{itemize}}
+    \cventry{2012‑2014}{INMEGEN (National Institute for Genomic Medicine)}{Bioinformatician}{Mexico City, Mexico}{}{\begin{itemize}%
+\item Annotation of the parasitic tapeworm Taenia solium genome.%
+\item Genome variants analysis of Mycobacterium tuberculosis clinical isolates.%
+\end{itemize}}
+    \cventry{2010‑2012}{UNAM (National Autonomous University of Mexico)}{Master Student}{Cuernavaca, Mexico}{}{\begin{itemize}%
+\item Construction of a combinatorial protein library using the “split resin” method.%
+\item Bacterial growth assay in multiple carbon sources%
+\end{itemize}}
+
+\hypertarget{selected-publications-8-of-19}{%
+\section{Selected Publications (8 of
+19)}\label{selected-publications-8-of-19}}
+
+{\Large \textbf{h‑index=13 , Citations = 1115, Erdös number=2, 19 Manuscripts}}
+\vspace{0.5cm}
+
+\nopagebreak
+    \cvitem{2022}{Estimating Classification Confidence Using Kernel Densities. arXiv preprint arXiv: :2207.06529}
+    \cvitem{2022}{Lentiviral globin gene therapy with reduced-intensity conditioning in adults with beta-thalassemia: a phase 1 trial. Nature Medicine 28 (1), 63-70}
+    \cvitem{2020}{Mitochondrial genome to aid species delimitation and effective conservation of the Sharpnose Guitarfish (Glaucostegus granulatus). Meta Gene 24, 100648}
+    \cvitem{2020}{PhANNs, a fast and accurate tool and web server to classify phage structural proteins. PLoS computational biology 16 (11), e1007845}
+    \cvitem{2019}{PRINSEQ++, a multi-threaded tool for fast and efficient quality control and preprocessing of sequencing datasets. PeerJ Preprints 7, e27553v1}
+    \cvitem{2018}{Machine learning for graph-based representations of three-dimensional discrete fracture networks. Computational Geosciences 22 (3), 695-710}
+    \cvitem{2014}{High-quality draft genomes of two Vibrio parahaemolyticus strains aid in understanding acute hepatopancreatic necrosis disease of cultured shrimps in Mexico. Genome announcements 2 (4), e00800-14}
+    \cvitem{2012}{Genetic engineering of the phosphocarrier protein NPr of the Escherichia coli phosphotransferase system selectively improves sugar uptake activity. Journal of Biological Chemistry 287 (35), 29931-29939}
+
+
+\end{document}
+
+%\clearpage\end{CJK*}                              % if you are typesetting your resume in Chinese using CJK; the \clearpage is required for fancyhdr to work correctly with CJK, though it kills the page numbering by making \lastpage undefined
+\end{document}
+
+
+%% end of file `template.tex'.
