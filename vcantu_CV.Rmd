@@ -8,10 +8,25 @@ surname: Cantu, PhD
 email: "vito@adrian-cantu.com"
 #twitter: mariecurie
 github: Adrian-Cantu
+
+#docname: "VCantu_CV"
 #linkedin: mariecurie
 #date: "`r format(Sys.time(), '%B %Y')`"
-output: 
-  vitae::moderncv
+# output:
+#   pdf_document:
+#     template: moderncv.tex
+#     keep_tex: true
+#     toc: false
+# params:
+# theme: banking
+fontsize: 2pt
+geometry: 
+  - scale=0.90
+output:
+  vitae::moderncv:
+    theme: banking
+    keep_tex:  true
+
 ---
 
 
@@ -29,15 +44,15 @@ library(gsheet)
 library(scholar)
 #library(easyPubMed)
 #library(googlesheets4)
+#system.file("rmarkdown", "templates", "moderncv",package = "vitae")
 ```
 
 ```{r education}
-gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1MRJsv7ikNyEsJByHhTkLKXOG048FFJnI9gr1nsxKQVM/edit?usp=sharing", sheet="Education") %>%
-  vitae::detailed_entries(what = Degree,
+gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1MRJsv7ikNyEsJByHhTkLKXOG048FFJnI9gr1nsxKQVM/edit?usp=sharing") %>%
+  vitae::detailed_entries(what = Institution,
                           when = Year,
-                          where = Institution, 
-                          with = Location, 
-                          why = Details)
+                          where = Location, 
+                          with =  Degree)
 ```
 
 
@@ -46,23 +61,52 @@ gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1MRJsv7ikNyEsJByHhTkL
 
 ```{r}
 
+all_pub <- 
+gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1MRJsv7ikNyEsJByHhTkLKXOG048FFJnI9gr1nsxKQVM/edit#gid=329721547") 
 
-scholar.id <- "Vc7DmLIAAAAJ" 
-pub <- get_publications(scholar.id)
-pub %>% 
-  data.frame() %>%
-  #mutate(title=str_replace(title,'β','\beta')) %>% 
+
+to_print_pub <- all_pub %>% 
+  filter(to_add_solugen=='TRUE') %>% 
   mutate(title=str_replace(title,"\\u03B2",'beta')) %>% 
-  #mutate(title=str_replace(title,"\\u0008",'--------')) %>%
-  #mutate(title= gsub(x = title, pattern ="<U+03B2>" , replacement = "\beta")) %>% 
   mutate(Title = title, Authors = author, 
          Journal = paste0(journal,' ',number),
-         Year = year) %>% 
-  vitae::detailed_entries(what = Title,
-                          when = Year,
-                          where = 'Institution', 
-                          with = Journal, 
-                          why = 'Why')
+         Year = year) 
   
 ```
 
+# Skills
+
+```{r}
+gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1MRJsv7ikNyEsJByHhTkLKXOG048FFJnI9gr1nsxKQVM/edit#gid=548159286") %>% 
+  vitae::brief_entries(what = Skill)
+                          #when = Year,
+                          #where = 'Institution', 
+                          #with = Journal) 
+                          #why = 'Why')
+```
+
+
+# Work Experience
+
+```{r}
+gsheet::gsheet2tbl("https://docs.google.com/spreadsheets/d/1MRJsv7ikNyEsJByHhTkLKXOG048FFJnI9gr1nsxKQVM/edit#gid=1986954561") %>%   
+  vitae::detailed_entries(what = Institution,
+                          when = Year,
+                          where = Location, 
+                          with =  Title,
+                          why = Details)
+```
+
+
+# Selected Publications (`r nrow(to_print_pub)` of `r nrow(all_pub)`)
+
+__h‑index=13 , Citations = 1115, Erdös number=2, 19 Manuscripts__
+
+```{r}
+to_print_pub %>% 
+  vitae::brief_entries(what = Title,
+                          when = Year,
+                          #where = 'Institution', 
+                          with = Journal) 
+                          #why = 'Why')
+```
